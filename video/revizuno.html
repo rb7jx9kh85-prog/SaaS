@@ -1,76 +1,218 @@
 <!doctype html><html><head><meta charset="utf-8"><style>
-:root{--bg:#0f1330;--card:#1b2045;--y:#f7dc6f;--p:#e889b0;--g:#6fd6a0;--b:#8ab8f5;--w:#eef0ff;--m:#9aa0c8}
+:root{--bg:#0f1330;--card:#1b2045;--y:#f7dc6f;--p:#e889b0;--g:#6fd6a0;--b:#8ab8f5;--w:#eef0ff;--m:#9aa0c8;--ink:#141838}
 *{box-sizing:border-box;margin:0}
-body{width:1080px;height:1920px;overflow:hidden;background:var(--bg);font-family:Inter,sans-serif;color:var(--w);
-background-image:linear-gradient(#ffffff08 1px,transparent 1px),linear-gradient(90deg,#ffffff08 1px,transparent 1px);background-size:72px 72px}
-.s{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:90px;opacity:0}
-.card{background:var(--card);border:4px solid var(--w);border-radius:44px;box-shadow:14px 14px 0 var(--w);padding:56px;width:100%}
-.btnY{background:var(--y);color:#141838;border:4px solid #fff;border-radius:34px;box-shadow:12px 12px 0 var(--p);font-weight:800;padding:34px 56px;font-size:52px}
-.h{font-weight:900;letter-spacing:-2px;text-align:center}
-.tag{display:inline-block;background:var(--y);color:#141838;border-radius:60px;padding:14px 38px;font-weight:800;font-size:40px}
-.logo{width:230px;height:230px;border-radius:52px;background:var(--y);border:8px solid var(--b);box-shadow:-18px -14px 0 var(--b);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:170px;color:#141838}
-.opt{border:4px solid #3a4180;border-radius:30px;padding:34px 40px;font-size:46px;font-weight:700;margin-top:26px;background:#141838}
-.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:16px;margin-top:30px}
-.cal div{aspect-ratio:1;border:3px solid #2c3366;border-radius:22px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:38px;background:#11163a}
-.stat{display:flex;justify-content:space-between;align-items:center;font-size:44px;color:var(--m);padding:36px 50px;margin-top:30px}
-.stat b{font-size:96px;color:var(--w);display:block}
+body{width:1080px;height:1920px;overflow:hidden;background:var(--bg);font-family:Inter,sans-serif;color:var(--w)}
+#cam{position:absolute;inset:0;transform-origin:50% 50%}
+#grid{position:absolute;inset:-200px;background-image:linear-gradient(#ffffff0b 2px,transparent 2px),linear-gradient(90deg,#ffffff0b 2px,transparent 2px);background-size:72px 72px}
+.blob{position:absolute;width:1100px;height:1100px;border-radius:50%;opacity:.55}
+.s{position:absolute;inset:0;display:none;flex-direction:column;align-items:center;padding:0 80px}
+.card{background:var(--card);border:5px solid var(--w);border-radius:44px;box-shadow:16px 16px 0 var(--w);padding:52px;width:100%}
+.btnY{background:var(--y);color:var(--ink);border:5px solid #fff;border-radius:40px;box-shadow:14px 14px 0 var(--p);font-weight:900}
+.h{font-weight:900;letter-spacing:-3px;text-align:center;line-height:1.05}
+.h span{display:inline-block;margin:0 .13em;opacity:0}
+.tag{display:inline-block;background:var(--y);color:var(--ink);border-radius:60px;padding:16px 40px;font-weight:800;font-size:42px;border:4px solid #fff}
+.logo{border-radius:60px;background:var(--y);border:9px solid var(--b);box-shadow:-20px -16px 0 var(--b),0 0 120px #f7dc6f88;display:flex;align-items:center;justify-content:center;font-weight:900;color:var(--ink)}
+.chip{position:absolute;left:50%;top:50%;background:#141838;border:4px solid var(--y);border-radius:30px;padding:24px 36px;font-size:44px;font-weight:800;white-space:nowrap;box-shadow:10px 10px 0 var(--p)}
+.opt{border:5px solid #3a4180;border-radius:30px;padding:34px 44px;font-size:52px;font-weight:800;margin-top:26px;background:#141838;position:relative}
+.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:14px;margin-top:26px}
+.cal div{aspect-ratio:1;border:3px solid #2c3366;border-radius:20px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:36px;background:#11163a;position:relative}
+.mini{flex:1;background:var(--card);border:4px solid var(--w);border-radius:34px;box-shadow:10px 10px 0 var(--w);padding:30px 26px;text-align:center;font-size:30px;color:var(--m)}
+.mini b{display:block;font-size:74px;color:var(--w);font-weight:900}
+.ring{position:absolute;border-radius:50%;border:10px solid var(--y);left:50%;top:50%}
+.stripe{position:absolute;top:-30%;height:160%;width:70%;transform-origin:50% 50%}
 </style></head><body>
-<!-- 1 intro -->
-<div class="s" id="s1"><div class="logo" id="lg">R</div><div class="h" style="font-size:150px;margin-top:70px" id="nm">Revizuno</div>
-<div class="tag" style="margin-top:40px" id="t1">🚀 C'est le lancement !</div>
-<div class="h" style="font-size:66px;margin-top:70px;color:var(--m);font-weight:600" id="t2">Des meilleures notes.<br><span style="color:var(--y)">Sans galérer.</span></div></div>
-<!-- 2 AI -->
-<div class="s" id="s2"><div class="tag">✨ Studio Revi</div><div class="h" style="font-size:96px;margin:40px 0 60px">Importe ton cours,<br>Revi fait le reste</div>
-<div class="card" id="doc" style="font-size:44px"><div style="color:var(--m);font-size:34px;letter-spacing:4px;font-weight:700">📄 COURS</div><div style="font-weight:800;font-size:58px;margin:16px 0">dossier calcul 7h 2</div>
-<div id="gen" style="font-size:42px;line-height:1.7"></div></div>
-<div class="card" id="chat" style="margin-top:50px;font-size:42px;padding:40px"><b style="color:var(--y)">Demander à Revi</b><div style="margin-top:14px;color:var(--m)" id="chatt"></div></div></div>
-<!-- 3 flashcards -->
-<div class="s" id="s3"><div class="h" style="font-size:100px">Flashcards</div><div style="font-size:42px;color:var(--m);margin:20px 0 50px">Carte 1 sur 13</div>
-<div class="tag">multiplication colonne</div>
-<div style="perspective:2400px;width:100%;margin-top:50px"><div id="fc" style="position:relative;height:720px;transform-style:preserve-3d">
-<div class="card" style="position:absolute;inset:0;backface-visibility:hidden;display:flex;flex-direction:column;justify-content:center;text-align:center"><div style="color:var(--m);letter-spacing:6px;font-weight:700;font-size:36px;position:absolute;top:56px;left:56px">QUESTION</div><div style="font-size:66px;font-weight:800">Comment poser une multiplication en colonne ?</div></div>
-<div class="card" style="position:absolute;inset:0;backface-visibility:hidden;transform:rotateY(180deg);display:flex;flex-direction:column;justify-content:center;text-align:center;border-color:var(--g);box-shadow:14px 14px 0 var(--g)"><div style="color:var(--g);letter-spacing:6px;font-weight:700;font-size:36px;position:absolute;top:56px;left:56px">RÉPONSE</div><div style="font-size:56px;font-weight:700;line-height:1.4">On aligne les unités, on multiplie chiffre par chiffre, puis on additionne ✅</div></div></div></div>
-<div style="display:flex;gap:40px;margin-top:70px"><div class="opt" style="background:#6a3f68;margin:0">À revoir</div><div class="opt" id="ks" style="background:#3f7a63;margin:0">Je savais</div></div></div>
-<!-- 4 quiz -->
-<div class="s" id="s4"><div class="h" style="font-size:100px">Quiz</div><div style="font-size:42px;color:var(--m);margin:20px 0 50px">Teste-toi avant le contrôle</div>
-<div class="card"><div style="font-size:60px;font-weight:800">Combien font 24 × 13 ?</div>
-<div class="opt" id="o1">A · 288</div><div class="opt" id="o2">B · 312</div><div class="opt" id="o3">C · 302</div></div>
-<div class="tag" id="sc" style="margin-top:60px;background:var(--g)">+1 · Bien joué ! 🎉</div></div>
-<!-- 5 calendar/stats -->
-<div class="s" id="s5"><div class="h" style="font-size:92px;margin-bottom:40px">Planifie. Progresse.</div>
-<div class="card" style="padding:44px"><div style="font-size:54px;font-weight:800">Mon calendrier · Octobre</div><div class="cal" id="cal"></div>
-<div style="margin-top:34px;font-size:36px;color:var(--m)">● session prévue · Google Agenda</div></div>
-<div style="display:flex;gap:30px;width:100%"><div class="card stat" id="st1" style="flex:1"><div><b id="n1">1</b>jour d'affilée</div>🔥</div><div class="card stat" id="st2" style="flex:1"><div><b id="n2">0</b>révisions</div>⚡</div></div>
-<div class="btnY" id="pl" style="margin-top:56px;font-size:44px">+ Planifier une session</div></div>
-<!-- 6 CTA -->
-<div class="s" id="s6"><div class="logo" style="width:170px;height:170px;font-size:125px;border-radius:40px">R</div>
-<div class="h" style="font-size:118px;margin-top:60px">Revizuno</div>
-<div style="font-size:48px;color:var(--m);margin:24px 0 80px;text-align:center">IA · Flashcards · Quiz · Planning · Stats</div>
-<div class="btnY" id="cta" style="font-size:76px;padding:50px 80px">Essai GRATUIT 🎁</div>
-<div class="h" style="font-size:84px;margin-top:100px;color:var(--y)" id="dom">revizuno.com</div></div>
+<div id="cam">
+ <div id="grid"></div>
+ <div class="blob" id="b1" style="background:radial-gradient(circle,#f7dc6f55,transparent 65%)"></div>
+ <div class="blob" id="b2" style="background:radial-gradient(circle,#e889b055,transparent 65%)"></div>
+ <div class="blob" id="b3" style="background:radial-gradient(circle,#8ab8f555,transparent 65%)"></div>
+ <div class="blob" id="b4" style="background:radial-gradient(circle,#6fd6a044,transparent 65%)"></div>
+
+ <!-- S1 INTRO -->
+ <div class="s" id="s1" style="justify-content:center">
+  <div class="ring" id="r1" style="top:640px"></div><div class="ring" id="r2" style="top:640px;border-color:var(--p)"></div>
+  <div class="logo" id="lg" style="width:300px;height:300px;font-size:220px">R</div>
+  <div class="h" id="nm" style="font-size:180px;margin-top:80px"></div>
+  <div class="tag" id="st" style="margin-top:50px;font-size:54px;padding:22px 52px;box-shadow:10px 10px 0 var(--p)">🚀 Enfin là !</div>
+  <div id="sub" style="margin-top:60px;font-size:50px;color:var(--m);font-weight:600;text-align:center">L'appli de révision<br><b style="color:var(--w)">boostée à l'IA</b></div>
+ </div>
+
+ <!-- S2 IA -->
+ <div class="s" id="s2" style="padding-top:230px">
+  <div class="h" id="h2" style="font-size:96px"></div>
+  <div style="position:relative;width:100%;margin-top:80px">
+   <div class="card" id="doc" style="position:relative;overflow:hidden;height:500px">
+    <div style="color:var(--m);font-size:34px;letter-spacing:5px;font-weight:700">📄 MON COURS</div>
+    <div style="font-weight:900;font-size:62px;margin:18px 0 30px">dossier calcul 7h 2</div>
+    <div style="height:22px;border-radius:11px;background:#2c3366;width:90%;margin:22px 0"></div>
+    <div style="height:22px;border-radius:11px;background:#2c3366;width:75%;margin:22px 0"></div>
+    <div style="height:22px;border-radius:11px;background:#2c3366;width:84%;margin:22px 0"></div>
+    <div style="height:22px;border-radius:11px;background:#2c3366;width:60%;margin:22px 0"></div>
+    <div id="scan" style="position:absolute;left:0;right:0;height:10px;background:var(--y);box-shadow:0 0 50px 20px #f7dc6f99"></div>
+    <div id="ia" class="tag" style="position:absolute;right:40px;top:40px;background:var(--b);font-size:36px">✨ Revi IA</div>
+   </div>
+   <div style="position:relative;height:420px">
+    <div class="chip" id="c1">🃏 13 flashcards</div>
+    <div class="chip" id="c2" style="border-color:var(--g)">❓ Quiz · 10 questions</div>
+    <div class="chip" id="c3" style="border-color:var(--b)">📝 Résumé du chapitre</div>
+   </div>
+  </div>
+ </div>
+
+ <!-- S3 FLASHCARDS -->
+ <div class="s" id="s3" style="padding-top:200px">
+  <div class="h" id="h3" style="font-size:100px"></div>
+  <div style="display:flex;justify-content:space-between;width:100%;margin-top:60px;font-size:42px;font-weight:800"><span id="cnt">Carte 1 sur 13</span><span class="tag" style="font-size:32px;padding:10px 28px">multiplication colonne</span></div>
+  <div style="width:100%;height:16px;border-radius:8px;background:#2c3366;margin-top:24px"><div id="bar" style="height:100%;border-radius:8px;background:var(--y);width:8%"></div></div>
+  <div style="position:relative;width:100%;height:760px;margin-top:60px;perspective:2600px">
+   <div class="card" id="fc3" style="position:absolute;inset:0;transform:rotate(7deg) translateY(30px) scale(.92);opacity:.5"></div>
+   <div class="card" id="fc2" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center"><div style="font-size:70px;font-weight:900">Combien font<br>7 × 8 ?</div></div>
+   <div id="fcT" style="position:absolute;inset:0;transform-style:preserve-3d">
+    <div id="fcIn" style="position:absolute;inset:0;transform-style:preserve-3d">
+     <div class="card" style="position:absolute;inset:0;backface-visibility:hidden;display:flex;align-items:center;justify-content:center;text-align:center"><div style="color:var(--m);letter-spacing:6px;font-weight:700;font-size:36px;position:absolute;top:52px;left:52px">QUESTION</div><div style="font-size:70px;font-weight:900;line-height:1.15">Comment poser une multiplication en colonne ?</div></div>
+     <div class="card" style="position:absolute;inset:0;backface-visibility:hidden;transform:rotateY(180deg);display:flex;align-items:center;justify-content:center;text-align:center;border-color:var(--g);box-shadow:16px 16px 0 var(--g)"><div style="color:var(--g);letter-spacing:6px;font-weight:700;font-size:36px;position:absolute;top:52px;left:52px">RÉPONSE</div><div style="font-size:58px;font-weight:700;line-height:1.35">On aligne les unités, on multiplie chiffre par chiffre, puis on additionne ✅</div></div>
+    </div>
+    <div id="stamp" style="position:absolute;top:120px;right:30px;border:8px solid var(--g);color:var(--g);font-size:70px;font-weight:900;padding:10px 30px;border-radius:24px;transform:rotate(14deg);opacity:0;background:#0f1330cc">JE SAVAIS ✓</div>
+   </div>
+  </div>
+  <div style="display:flex;gap:40px;margin-top:70px"><div class="opt" style="background:#6a3f68;margin:0">À revoir</div><div class="opt" id="ks" style="background:#3f7a63;margin:0">Je savais</div></div>
+ </div>
+
+ <!-- S4 QUIZ -->
+ <div class="s" id="s4" style="padding-top:220px">
+  <div class="h" id="h4" style="font-size:100px"></div>
+  <div class="card" id="qz" style="margin-top:80px;position:relative">
+   <svg width="130" height="130" style="position:absolute;right:40px;top:36px;transform:rotate(-90deg)"><circle cx="65" cy="65" r="54" fill="none" stroke="#2c3366" stroke-width="14"/><circle id="tm" cx="65" cy="65" r="54" fill="none" stroke="var(--y)" stroke-width="14" stroke-linecap="round" stroke-dasharray="339.3"/></svg>
+   <div style="color:var(--m);font-size:34px;letter-spacing:5px;font-weight:700">QUIZ · 3/10</div>
+   <div style="font-size:72px;font-weight:900;margin:20px 0 20px">24 × 13 = ?</div>
+   <div class="opt" id="o1">A · 288</div><div class="opt" id="o2">B · 312</div><div class="opt" id="o3">C · 302</div>
+  </div>
+  <div class="tag" id="sc" style="margin-top:70px;background:var(--g);font-size:60px;padding:22px 56px;box-shadow:10px 10px 0 var(--w)">+1 · Bien joué ! 🎉</div>
+  <div id="hand" style="position:absolute;font-size:120px">👆</div>
+ </div>
+
+ <!-- S5 PLANNING -->
+ <div class="s" id="s5" style="padding-top:170px">
+  <div class="h" id="h5" style="font-size:88px"></div>
+  <div class="card" id="calc" style="margin-top:56px;padding:44px">
+   <div style="display:flex;justify-content:space-between;align-items:center"><div style="font-size:54px;font-weight:900">Mon calendrier</div><div class="tag" style="font-size:30px;padding:10px 24px;background:var(--w)">📅 Google Agenda</div></div>
+   <div style="font-size:38px;color:var(--m);font-weight:700;margin-top:10px">Octobre 2026</div>
+   <div class="cal" id="cal"></div>
+  </div>
+  <div style="display:flex;gap:28px;width:100%;margin-top:56px">
+   <div class="mini" id="m1"><b><span id="n1">1</span> 🔥</b>jours d'affilée</div>
+   <div class="mini" id="m2"><b><span id="n2">0</span> ⚡</b>révisions</div>
+   <div class="mini" id="m3" style="position:relative"><svg width="150" height="150" style="transform:rotate(-90deg)"><circle cx="75" cy="75" r="60" fill="none" stroke="#2c3366" stroke-width="16"/><circle id="pr" cx="75" cy="75" r="60" fill="none" stroke="var(--g)" stroke-width="16" stroke-linecap="round" stroke-dasharray="377"/></svg><div style="position:absolute;left:0;right:0;top:78px;font-size:44px;font-weight:900;color:var(--w)"><span id="n3">0</span>%</div><div>maîtrisé</div></div>
+  </div>
+  <div id="rk" style="position:absolute;font-size:170px">🚀</div>
+ </div>
+
+ <!-- S6 CTA -->
+ <div class="s" id="s6" style="padding-top:200px">
+  <div id="sun" style="position:absolute;left:50%;top:1180px;width:2600px;height:2600px;margin:-1300px 0 0 -1300px;border-radius:50%;background:repeating-conic-gradient(#f7dc6f1c 0 9deg,transparent 9deg 18deg);-webkit-mask:radial-gradient(circle,#000 20%,transparent 62%)"></div>
+  <div style="display:flex;align-items:center;gap:36px" id="brand"><div class="logo" style="width:140px;height:140px;font-size:104px;border-radius:36px;box-shadow:-12px -10px 0 var(--b)">R</div><div style="font-size:100px;font-weight:900;letter-spacing:-3px">Revizuno</div></div>
+  <div class="h" id="h6" style="font-size:112px;margin-top:110px"></div>
+  <div class="btnY" id="cta" style="margin-top:120px;font-size:84px;padding:52px 70px;letter-spacing:-2px;white-space:nowrap">ESSAI GRATUIT 🎁</div>
+  <div id="cta2" style="font-size:40px;color:var(--m);margin-top:40px;font-weight:600">Sans carte bancaire · Prêt en 30 s</div>
+  <div style="margin-top:80px;font-size:104px;font-weight:900;color:var(--y);letter-spacing:-2px;height:130px" id="dom"></div>
+ </div>
+
+ <canvas id="fx" width="1080" height="1920" style="position:absolute;inset:0"></canvas>
+</div>
+<div id="wipe" style="position:absolute;inset:0;overflow:hidden;pointer-events:none">
+ <div class="stripe" id="w1" style="background:var(--y)"></div><div class="stripe" id="w2" style="background:var(--p)"></div><div class="stripe" id="w3" style="background:var(--b)"></div>
+</div>
+<div id="flash" style="position:absolute;inset:0;background:#fff;opacity:0"></div>
 <script>
 const $=id=>document.getElementById(id),cl=x=>Math.max(0,Math.min(1,x)),
-E=x=>{x=cl(x);return 1-Math.pow(1-x,3)},B=x=>{x=cl(x);const c=1.7;return 1+(c+1)*Math.pow(x-1,3)+c*Math.pow(x-1,2)},
-seg=[[0,3.2],[3.2,6.8],[6.8,10.4],[10.4,13.4],[13.4,16.6],[16.6,20.5]];
-let c='';for(let i=0;i<4;i++)c+=`<div style="opacity:.3">${28+i<31?28+i:''}</div>`.replace(/>31</,'><');
-c='<div style="opacity:.3">28</div><div style="opacity:.3">29</div><div style="opacity:.3">30</div>';for(let d=1;d<=31;d++)c+=`<div data-d="${d}">${d}</div>`;$('cal').innerHTML=c;
-const lines=['✅ 13 flashcards générées','✅ 1 quiz de 10 questions','✅ Résumé du chapitre'],q='Explique-moi les retenues 🤔';
-function el(e,a,y=60,s=.9){e.style.opacity=E(a);e.style.transform=`translateY(${(1-E(a))*y}px) scale(${s+(1-s)*B(a)})`}
-window.setT=t=>{seg.forEach(([a,b],i)=>{const s=$('s'+(i+1)),fi=cl((t-a)/.35),fo=i==5?1:1-cl((t-(b-.3))/.3);s.style.opacity=Math.min(fi,fo);
-s.style.transform=`translateX(${(1-E(fi))*120-(1-fo)*120}px)`});
-// s1
-let l=t;$('lg').style.transform=`scale(${B(l/.7)}) rotate(${(1-E(l/.7))*-30}deg)`;el($('nm'),(l-.4)/.5);el($('t1'),(l-.9)/.5);el($('t2'),(l-1.4)/.5);
-// s2
-l=t-3.2;el($('doc'),(l-.2)/.4);$('gen').innerHTML=lines.filter((_,i)=>l>.8+i*.5).join('<br>');el($('chat'),(l-2.1)/.4);$('chatt').textContent=q.slice(0,Math.floor(cl((l-2.4)/.8)*q.length));
-// s3
-l=t-6.8;$('fc').style.transform=`rotateY(${E((l-1.4)/.6)*180}deg)`;$('ks').style.transform=`scale(${1+.12*Math.sin(Math.PI*cl((l-2.6)/.4))})`;$('ks').style.borderColor=l>2.6?'var(--g)':'#3a4180';
-// s4
-l=t-10.4;['o1','o2','o3'].forEach((o,i)=>el($(o),(l-.2-i*.15)/.35,40,1));const ok=l>1.5;$('o2').style.background=ok?'var(--g)':'#141838';$('o2').style.color=ok?'#141838':'';$('o2').style.borderColor=ok?'#fff':'#3a4180';el($('sc'),(l-1.7)/.4);
-// s5
-l=t-13.4;document.querySelectorAll('[data-d]').forEach(d=>{const n=+d.dataset.d,on=l>.3+n*.03;const lv=[0,1,2,3,2,0,1,3,2,1,0,2,3,3,1,2,0,1,2,3,2,1,3,2,1,0,2][n%27];
-d.style.background=on&&n<=27?['#11163a','#2a4f52','#3d7a69','#5aa88a','#6fd6a0'][n==27?4:lv]:'#11163a';d.style.color=on&&n==27?'#141838':'';d.style.borderColor=n==27&&on?'#fff':'#2c3366'});
-el($('st1'),(l-.8)/.4,40,1);el($('st2'),(l-1)/.4,40,1);$('n1').textContent=Math.round(1+E((l-1)/1.2)*6);$('n2').textContent=Math.round(E((l-1)/1.2)*57);el($('pl'),(l-1.8)/.4);
-// s6
-l=t-16.6;el($('cta'),(l-.4)/.5,80,.6);$('cta').style.transform+=` scale(${1+.05*Math.sin(Math.max(0,l-1)*6)})`;el($('dom'),(l-.9)/.5);
+E=x=>{x=cl(x);return 1-Math.pow(1-x,3)},EI=x=>{x=cl(x);return x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2},
+B=x=>{x=cl(x);const c=2.2;return 1+(c+1)*Math.pow(x-1,3)+c*Math.pow(x-1,2)},
+P=(l,a,d)=>cl((l-a)/d);
+// timeline (s) — synced to the ElevenLabs voice-over in audio/
+const SC=[0,2.6,6.7,9.3,11.9,15.5,20.01];
+const IMPACTS=[[0.3,26],[15.5,30],[17.4,22]],PUNCH=[0.3,2.6,6.7,8.4,9.3,10.6,11.9,15.5,17.4];
+function mk(id,words,sep=' '){$(id).innerHTML=words.map(w=>`<span${w[0]=='*'?' style="color:var(--y)"':''}>${w.replace('*','')}</span>`).join(sep)}
+mk('nm','Revizuno'.split(''),'');$('nm').style.whiteSpace='nowrap';document.querySelectorAll('#nm span').forEach(s=>s.style.margin='0');
+mk('h2',['Importe','ton','cours,','et','*Revi','prépare','*tout','pour','toi','✨']);
+mk('h3',['Des','*flashcards','pour','tout','retenir']);
+mk('h4',['Des','*quiz','pour','cartonner','au','contrôle','!']);
+mk('h5',['Planifie','tes','révisions,','regarde','ta','*progression','décoller']);
+$('h6').innerHTML='<span>De</span> <span>meilleures</span> <span>notes,</span><br><span id="hl" style="color:var(--y);padding:0 14px;background:linear-gradient(#e889b066,#e889b066) no-repeat 0 85%/0% 40%">sans galérer.</span>';
+function rev(id,l,a,b){const s=[...$(id).children].filter(x=>x.tagName=='SPAN'),n=s.length;s.forEach((w,i)=>{const p=P(l,a+(b-a)*i/n,.28);
+ w.style.opacity=cl(p*3);w.style.transform=`translateY(${(1-E(p))*70}px) scale(${.4+.6*B(p)}) rotate(${(1-E(p))*-8}deg)`})}
+function pop(e,p,{y=60,x=0,r=0,s=.5}={}){e.style.opacity=cl(p*2.5);e.style.transform=`translate(${(1-E(p))*x}px,${(1-E(p))*y}px) rotate(${(1-E(p))*r}deg) scale(${s+(1-s)*B(p)})`}
+// calendar
+let c='';[28,29,30].forEach(d=>c+=`<div style="opacity:.3">${d}</div>`);for(let d=1;d<=31;d++)c+=`<div data-d="${d}">${d}</div>`;c+='<div style="opacity:.3">1</div>';$('cal').innerHTML=c;
+// deterministic particles
+function rng(s){return()=>{s|=0;s=s+0x6D2B79F5|0;let t=Math.imul(s^s>>>15,1|s);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+const COL=['#f7dc6f','#e889b0','#6fd6a0','#8ab8f5','#ffffff'],BURSTS=[];
+function burst(t0,x,y,n,ang,spr,v0,g,seed,life=2.4){const r=rng(seed);for(let i=0;i<n;i++){const a=ang+(r()-.5)*spr,v=v0*(.45+r()*.75);
+ BURSTS.push({t0,x,y,vx:Math.cos(a)*v,vy:Math.sin(a)*v,g,c:COL[i%5],w:12+r()*16,h:8+r()*12,rot:r()*6,sp:(r()-.5)*16,life,shape:r()<.3})}}
+burst(0.3,540,640,140,0,Math.PI*2,1700,900,1,1.8);
+burst(8.4,760,1690,40,-Math.PI/2,1.6,1500,2600,2,1.4);
+burst(10.6,540,1090,120,-Math.PI/2,2.6,2100,2600,3);
+burst(17.4,0,1920,150,-1.05,.7,3000,2300,4,3);burst(17.4,1080,1920,150,-2.09,.7,3000,2300,5,3);
+burst(19.0,540,-40,90,Math.PI/2,1.2,500,700,6,2);
+const DUST=Array.from({length:60},(_,i)=>{const r=rng(100+i);return{x:r()*1080,y:r()*1920,s:2+r()*5,v:20+r()*60,ph:r()*6}});
+const ctx=$('fx').getContext('2d');
+function drawFx(t){ctx.clearRect(0,0,1080,1920);
+ DUST.forEach(d=>{ctx.globalAlpha=.25+.25*Math.sin(t*2+d.ph);ctx.fillStyle='#fff';ctx.beginPath();ctx.arc(d.x+Math.sin(t+d.ph)*20,(d.y-t*d.v+1920*5)%1920,d.s,0,7);ctx.fill()});
+ BURSTS.forEach(p=>{const dt=t-p.t0;if(dt<0||dt>p.life)return;const dr=Math.exp(-dt*1.6),x=p.x+p.vx*(1-dr)/1.6,y=p.y+p.vy*(1-dr)/1.6+.5*p.g*dt*dt*.5;
+  ctx.globalAlpha=cl((p.life-dt)/.5);ctx.save();ctx.translate(x,y);ctx.rotate(p.rot+p.sp*dt);ctx.scale(1,Math.cos(dt*p.sp));ctx.fillStyle=p.c;
+  if(p.shape){ctx.beginPath();ctx.arc(0,0,p.w/2,0,7);ctx.fill()}else ctx.fillRect(-p.w/2,-p.h/2,p.w,p.h);ctx.restore()});ctx.globalAlpha=1}
+window.setT=t=>{
+ const k=SC.findIndex((v,i)=>t>=v&&t<SC[i+1]);for(let i=1;i<=6;i++)$('s'+i).style.display=i==k+1?'flex':'none';
+ // camera: zoom punch + shake + slow push-in
+ let z=1+.015*Math.sin(t*.8);PUNCH.forEach(b=>{if(t>=b)z+=.06*Math.exp(-(t-b)*7)});let sx=0,sy=0;
+ IMPACTS.forEach(([b,a])=>{if(t>=b){const d=a*Math.exp(-(t-b)*9);sx+=d*Math.sin((t-b)*90);sy+=d*Math.cos((t-b)*77)}});
+ $('cam').style.transform=`translate(${sx}px,${sy}px) scale(${z})`;
+ $('grid').style.transform=`translateY(${(t*60)%72}px)`;
+ [[1,200,300,.5],[2,800,1500,.4],[3,900,400,.6],[4,100,1300,.35]].forEach(([i,x,y,s])=>$('b'+i).style.transform=`translate(${x-550+Math.sin(t*s+i)*180}px,${y-550+Math.cos(t*s*1.3+i)*220}px)`);
+ // wipes between scenes
+ let wp=-1;for(let i=1;i<6;i++){const d=t-SC[i];if(d>-.32&&d<.32)wp=(d+.32)/.64}
+ ['w1','w2','w3'].forEach((w,i)=>{const p=wp<0?(wp=-1,-1):EI(wp*1.25-i*.12);const e=$(w);e.style.display=wp<0?'none':'block';e.style.transform=`translateX(${-150+p*400}%) skewX(-18deg)`;e.style.left=(i*8-20)+'%'});
+ let fl=0;[[0.3,.9],[15.5,.7],[17.4,.5]].forEach(([b,a])=>{if(t>=b)fl=Math.max(fl,a*Math.exp(-(t-b)*10))});$('flash').style.opacity=fl;
+ let l;
+ // S1
+ l=t;const lp=P(l,.05,.25);$('lg').style.transform=`scale(${lp<1?4-3*E(lp):1+.04*Math.sin((l-.3)*5)}) rotate(${(1-E(lp))*-40}deg)`;$('lg').style.opacity=cl(lp*3);
+ ['r1','r2'].forEach((r,i)=>{const p=P(l,.3+i*.1,.9);const e=$(r);e.style.width=e.style.height='300px';e.style.margin='-150px 0 0 -150px';e.style.transform=`scale(${.8+E(p)*4.5})`;e.style.opacity=p>0&&p<1?1-p:0});
+ rev('nm',l,.55,1.2);pop($('st'),P(l,1.35,.4),{r:-30,y:0,s:0});$('st').style.transform+=' rotate(-5deg)';pop($('sub'),P(l,1.75,.4));
+ // S2
+ l=t-SC[1];rev('h2',l,.15,3.4);pop($('doc'),P(l,.35,.5),{y:600,r:12,s:.7});
+ const sp=P(l,1.0,.9);$('scan').style.top=(20+sp*460)+'px';$('scan').style.opacity=sp>0&&sp<1?1:0;pop($('ia'),P(l,1.0,.35),{y:0,s:0,r:90});
+ [['c1',1.9,-230,40],['c2',2.2,0,160],['c3',2.5,230,280]].forEach(([id,a,dx,dy],i)=>{const p=P(l,a,.45),e=$(id);e.style.opacity=cl(p*3);
+  e.style.transform=`translate(calc(-50% + ${(i==1?120:i==0?-120:-60)*E(p)}px),${-300+(dy-60+300)*E(p)}px) scale(${.3+.7*B(p)}) rotate(${(i-1)*-4*E(p)}deg)`});
+ // S3
+ l=t-SC[2];rev('h3',l,.15,1.7);const dp=P(l,.2,.45);[$('fc2'),$('fcT')].forEach((e,i)=>{e.style.opacity=cl(dp*3)});
+ const fl3=EI(P(l,.9,.5)),sw=P(l,1.75,.45);$('fcIn').style.transform=`rotateY(${fl3*180}deg)`;
+ $('fcT').style.transform=`translate(${sw*sw*1500}px,${(1-E(dp))*500 - sw*200}px) rotate(${sw*35+(1-E(dp))*-10}deg) scale(${1+.04*Math.sin(Math.PI*fl3)})`;
+ pop($('stamp'),P(l,1.5,.25),{y:0,s:2.5});$('stamp').style.transform+=' rotate(14deg)';
+ const nx=E(P(l,1.95,.4));$('fc2').style.transform=`rotate(${-5*(1-nx)}deg) translateY(${18*(1-nx)}px) scale(${.96+.04*nx})`;
+ $('cnt').textContent=`Carte ${l>2?2:1} sur 13`;$('bar').style.width=(8+8*E(P(l,2,.4)))+'%';
+ $('ks').style.transform=`scale(${1+.15*Math.sin(Math.PI*P(l,1.5,.3))})`;$('ks').style.boxShadow=l>1.5?'0 0 60px #6fd6a0':'none';$('ks').style.borderColor=l>1.5?'var(--g)':'#3a4180';
+ // S4
+ l=t-SC[3];rev('h4',l,.15,1.6);pop($('qz'),P(l,.15,.45),{y:0,s:.3,r:-6});
+ ['o1','o2','o3'].forEach((o,i)=>pop($(o),P(l,.45+i*.12,.35),{x:i%2?900:-900,y:0,s:1}));
+ $('tm').style.strokeDashoffset=339.3*cl(l/1.3);const ok=l>1.3,o2=$('o2');
+ o2.style.background=ok?'var(--g)':'#141838';o2.style.color=ok?'var(--ink)':'';o2.style.borderColor=ok?'#fff':'#3a4180';o2.style.boxShadow=ok?'0 0 80px #6fd6a0bb':'none';
+ if(ok)o2.style.transform=`scale(${1+.08*Math.exp(-(l-1.3)*6)*Math.cos((l-1.3)*20)})`;['o1','o3'].forEach(o=>{if(ok)$(o).style.opacity=.35});
+ const hp=EI(P(l,.8,.45));$('hand').style.left=(760-200*hp)+'px';$('hand').style.top=(1700-480*hp+(l>1.25&&l<1.4?20:0))+'px';$('hand').style.opacity=cl((l-.7)*5)*(1-cl((l-1.8)*4));
+ pop($('sc'),P(l,1.45,.4),{y:100,s:0,r:-10});
+ // S5
+ l=t-SC[4];rev('h5',l,.15,2.6);pop($('calc'),P(l,.2,.5),{y:300,s:.8});
+ document.querySelectorAll('[data-d]').forEach(d=>{const n=+d.dataset.d,col=(n+2)%7,row=Math.floor((n+2)/7),p=P(l,.55+(col+row)*.07,.3);
+  const lv=[1,2,3,2,1,3,2,4,3,1,2,3,4,2][n%14],cs=['#11163a','#2a4f52','#3d7a69','#5aa88a','#6fd6a0'];const on=n<=27;
+  d.style.background=on&&p>0?cs[n==27?4:lv]:'#11163a';d.style.transform=`scale(${on?1+.25*Math.sin(Math.PI*p):1})`;
+  d.style.color=n==27&&p>0?'var(--ink)':'';d.style.borderColor=n==27&&p>0?'#fff':'#2c3366'});
+ ['m1','m2','m3'].forEach((m,i)=>pop($(m),P(l,1.2+i*.12,.4),{y:200,s:.5}));const cp=E(P(l,1.4,1.4));
+ $('n1').textContent=Math.round(1+cp*6);$('n2').textContent=Math.round(cp*57);$('n3').textContent=Math.round(cp*92);$('pr').style.strokeDashoffset=377*(1-.92*cp);
+ const rp=P(l,2.3,1.1);$('rk').style.left=(-150+rp*1300)+'px';$('rk').style.top=(1800-rp*rp*1900)+'px';$('rk').style.transform=`rotate(${rp*20}deg)`;$('rk').style.opacity=rp>0&&rp<1?1:0;
+ // S6
+ l=t-SC[5];$('sun').style.transform=`rotate(${l*25}deg) scale(${.4+.6*E(P(l,0,.6))})`;pop($('brand'),P(l,.05,.4),{y:-200,s:.6});
+ rev('h6',l,.15,1.2);$('hl').style.backgroundSize=`${E(P(l,1.2,.5))*100}% 40%`;
+ const cpp=P(l,1.9,.35);pop($('cta'),cpp,{y:0,s:3});if(cpp>=1)$('cta').style.transform=`scale(${1+.045*Math.sin((l-2.3)*7)}) rotate(${-1.5*Math.sin((l-2.3)*3.5)}deg)`;
+ pop($('cta2'),P(l,2.4,.4));const dm='revizuno.com',dn=Math.floor(cl((l-2.9)/.6)*dm.length);$('dom').innerHTML=dm.slice(0,dn)+(l>2.8&&Math.floor(l*3)%2?'<span style="color:var(--w)">|</span>':'');
+ drawFx(t);
+ if(k==4&&rp>0&&rp<1){/* rocket trail */const x=-150+rp*1300+85,y=1800-rp*rp*1900+120;for(let i=0;i<14;i++){const q=Math.max(0,rp-i*.025),tx=-150+q*1300+85,ty=1800-q*q*1900+130;ctx.globalAlpha=.6*(1-i/14);ctx.fillStyle=COL[i%2?1:0];ctx.beginPath();ctx.arc(tx,ty,26-i*1.5,0,7);ctx.fill()}ctx.globalAlpha=1}
 };setT(0);
 </script></body></html>
