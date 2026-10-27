@@ -1,0 +1,76 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+:root{--bg:#0f1330;--card:#1b2045;--y:#f7dc6f;--p:#e889b0;--g:#6fd6a0;--b:#8ab8f5;--w:#eef0ff;--m:#9aa0c8}
+*{box-sizing:border-box;margin:0}
+body{width:1080px;height:1920px;overflow:hidden;background:var(--bg);font-family:Inter,sans-serif;color:var(--w);
+background-image:linear-gradient(#ffffff08 1px,transparent 1px),linear-gradient(90deg,#ffffff08 1px,transparent 1px);background-size:72px 72px}
+.s{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:90px;opacity:0}
+.card{background:var(--card);border:4px solid var(--w);border-radius:44px;box-shadow:14px 14px 0 var(--w);padding:56px;width:100%}
+.btnY{background:var(--y);color:#141838;border:4px solid #fff;border-radius:34px;box-shadow:12px 12px 0 var(--p);font-weight:800;padding:34px 56px;font-size:52px}
+.h{font-weight:900;letter-spacing:-2px;text-align:center}
+.tag{display:inline-block;background:var(--y);color:#141838;border-radius:60px;padding:14px 38px;font-weight:800;font-size:40px}
+.logo{width:230px;height:230px;border-radius:52px;background:var(--y);border:8px solid var(--b);box-shadow:-18px -14px 0 var(--b);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:170px;color:#141838}
+.opt{border:4px solid #3a4180;border-radius:30px;padding:34px 40px;font-size:46px;font-weight:700;margin-top:26px;background:#141838}
+.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:16px;margin-top:30px}
+.cal div{aspect-ratio:1;border:3px solid #2c3366;border-radius:22px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:38px;background:#11163a}
+.stat{display:flex;justify-content:space-between;align-items:center;font-size:44px;color:var(--m);padding:36px 50px;margin-top:30px}
+.stat b{font-size:96px;color:var(--w);display:block}
+</style></head><body>
+<!-- 1 intro -->
+<div class="s" id="s1"><div class="logo" id="lg">R</div><div class="h" style="font-size:150px;margin-top:70px" id="nm">Revizuno</div>
+<div class="tag" style="margin-top:40px" id="t1">🚀 C'est le lancement !</div>
+<div class="h" style="font-size:66px;margin-top:70px;color:var(--m);font-weight:600" id="t2">Des meilleures notes.<br><span style="color:var(--y)">Sans galérer.</span></div></div>
+<!-- 2 AI -->
+<div class="s" id="s2"><div class="tag">✨ Studio Revi</div><div class="h" style="font-size:96px;margin:40px 0 60px">Importe ton cours,<br>Revi fait le reste</div>
+<div class="card" id="doc" style="font-size:44px"><div style="color:var(--m);font-size:34px;letter-spacing:4px;font-weight:700">📄 COURS</div><div style="font-weight:800;font-size:58px;margin:16px 0">dossier calcul 7h 2</div>
+<div id="gen" style="font-size:42px;line-height:1.7"></div></div>
+<div class="card" id="chat" style="margin-top:50px;font-size:42px;padding:40px"><b style="color:var(--y)">Demander à Revi</b><div style="margin-top:14px;color:var(--m)" id="chatt"></div></div></div>
+<!-- 3 flashcards -->
+<div class="s" id="s3"><div class="h" style="font-size:100px">Flashcards</div><div style="font-size:42px;color:var(--m);margin:20px 0 50px">Carte 1 sur 13</div>
+<div class="tag">multiplication colonne</div>
+<div style="perspective:2400px;width:100%;margin-top:50px"><div id="fc" style="position:relative;height:720px;transform-style:preserve-3d">
+<div class="card" style="position:absolute;inset:0;backface-visibility:hidden;display:flex;flex-direction:column;justify-content:center;text-align:center"><div style="color:var(--m);letter-spacing:6px;font-weight:700;font-size:36px;position:absolute;top:56px;left:56px">QUESTION</div><div style="font-size:66px;font-weight:800">Comment poser une multiplication en colonne ?</div></div>
+<div class="card" style="position:absolute;inset:0;backface-visibility:hidden;transform:rotateY(180deg);display:flex;flex-direction:column;justify-content:center;text-align:center;border-color:var(--g);box-shadow:14px 14px 0 var(--g)"><div style="color:var(--g);letter-spacing:6px;font-weight:700;font-size:36px;position:absolute;top:56px;left:56px">RÉPONSE</div><div style="font-size:56px;font-weight:700;line-height:1.4">On aligne les unités, on multiplie chiffre par chiffre, puis on additionne ✅</div></div></div></div>
+<div style="display:flex;gap:40px;margin-top:70px"><div class="opt" style="background:#6a3f68;margin:0">À revoir</div><div class="opt" id="ks" style="background:#3f7a63;margin:0">Je savais</div></div></div>
+<!-- 4 quiz -->
+<div class="s" id="s4"><div class="h" style="font-size:100px">Quiz</div><div style="font-size:42px;color:var(--m);margin:20px 0 50px">Teste-toi avant le contrôle</div>
+<div class="card"><div style="font-size:60px;font-weight:800">Combien font 24 × 13 ?</div>
+<div class="opt" id="o1">A · 288</div><div class="opt" id="o2">B · 312</div><div class="opt" id="o3">C · 302</div></div>
+<div class="tag" id="sc" style="margin-top:60px;background:var(--g)">+1 · Bien joué ! 🎉</div></div>
+<!-- 5 calendar/stats -->
+<div class="s" id="s5"><div class="h" style="font-size:92px;margin-bottom:40px">Planifie. Progresse.</div>
+<div class="card" style="padding:44px"><div style="font-size:54px;font-weight:800">Mon calendrier · Octobre</div><div class="cal" id="cal"></div>
+<div style="margin-top:34px;font-size:36px;color:var(--m)">● session prévue · Google Agenda</div></div>
+<div style="display:flex;gap:30px;width:100%"><div class="card stat" id="st1" style="flex:1"><div><b id="n1">1</b>jour d'affilée</div>🔥</div><div class="card stat" id="st2" style="flex:1"><div><b id="n2">0</b>révisions</div>⚡</div></div>
+<div class="btnY" id="pl" style="margin-top:56px;font-size:44px">+ Planifier une session</div></div>
+<!-- 6 CTA -->
+<div class="s" id="s6"><div class="logo" style="width:170px;height:170px;font-size:125px;border-radius:40px">R</div>
+<div class="h" style="font-size:118px;margin-top:60px">Revizuno</div>
+<div style="font-size:48px;color:var(--m);margin:24px 0 80px;text-align:center">IA · Flashcards · Quiz · Planning · Stats</div>
+<div class="btnY" id="cta" style="font-size:76px;padding:50px 80px">Essai GRATUIT 🎁</div>
+<div class="h" style="font-size:84px;margin-top:100px;color:var(--y)" id="dom">revizuno.com</div></div>
+<script>
+const $=id=>document.getElementById(id),cl=x=>Math.max(0,Math.min(1,x)),
+E=x=>{x=cl(x);return 1-Math.pow(1-x,3)},B=x=>{x=cl(x);const c=1.7;return 1+(c+1)*Math.pow(x-1,3)+c*Math.pow(x-1,2)},
+seg=[[0,3.2],[3.2,6.8],[6.8,10.4],[10.4,13.4],[13.4,16.6],[16.6,20.5]];
+let c='';for(let i=0;i<4;i++)c+=`<div style="opacity:.3">${28+i<31?28+i:''}</div>`.replace(/>31</,'><');
+c='<div style="opacity:.3">28</div><div style="opacity:.3">29</div><div style="opacity:.3">30</div>';for(let d=1;d<=31;d++)c+=`<div data-d="${d}">${d}</div>`;$('cal').innerHTML=c;
+const lines=['✅ 13 flashcards générées','✅ 1 quiz de 10 questions','✅ Résumé du chapitre'],q='Explique-moi les retenues 🤔';
+function el(e,a,y=60,s=.9){e.style.opacity=E(a);e.style.transform=`translateY(${(1-E(a))*y}px) scale(${s+(1-s)*B(a)})`}
+window.setT=t=>{seg.forEach(([a,b],i)=>{const s=$('s'+(i+1)),fi=cl((t-a)/.35),fo=i==5?1:1-cl((t-(b-.3))/.3);s.style.opacity=Math.min(fi,fo);
+s.style.transform=`translateX(${(1-E(fi))*120-(1-fo)*120}px)`});
+// s1
+let l=t;$('lg').style.transform=`scale(${B(l/.7)}) rotate(${(1-E(l/.7))*-30}deg)`;el($('nm'),(l-.4)/.5);el($('t1'),(l-.9)/.5);el($('t2'),(l-1.4)/.5);
+// s2
+l=t-3.2;el($('doc'),(l-.2)/.4);$('gen').innerHTML=lines.filter((_,i)=>l>.8+i*.5).join('<br>');el($('chat'),(l-2.1)/.4);$('chatt').textContent=q.slice(0,Math.floor(cl((l-2.4)/.8)*q.length));
+// s3
+l=t-6.8;$('fc').style.transform=`rotateY(${E((l-1.4)/.6)*180}deg)`;$('ks').style.transform=`scale(${1+.12*Math.sin(Math.PI*cl((l-2.6)/.4))})`;$('ks').style.borderColor=l>2.6?'var(--g)':'#3a4180';
+// s4
+l=t-10.4;['o1','o2','o3'].forEach((o,i)=>el($(o),(l-.2-i*.15)/.35,40,1));const ok=l>1.5;$('o2').style.background=ok?'var(--g)':'#141838';$('o2').style.color=ok?'#141838':'';$('o2').style.borderColor=ok?'#fff':'#3a4180';el($('sc'),(l-1.7)/.4);
+// s5
+l=t-13.4;document.querySelectorAll('[data-d]').forEach(d=>{const n=+d.dataset.d,on=l>.3+n*.03;const lv=[0,1,2,3,2,0,1,3,2,1,0,2,3,3,1,2,0,1,2,3,2,1,3,2,1,0,2][n%27];
+d.style.background=on&&n<=27?['#11163a','#2a4f52','#3d7a69','#5aa88a','#6fd6a0'][n==27?4:lv]:'#11163a';d.style.color=on&&n==27?'#141838':'';d.style.borderColor=n==27&&on?'#fff':'#2c3366'});
+el($('st1'),(l-.8)/.4,40,1);el($('st2'),(l-1)/.4,40,1);$('n1').textContent=Math.round(1+E((l-1)/1.2)*6);$('n2').textContent=Math.round(E((l-1)/1.2)*57);el($('pl'),(l-1.8)/.4);
+// s6
+l=t-16.6;el($('cta'),(l-.4)/.5,80,.6);$('cta').style.transform+=` scale(${1+.05*Math.sin(Math.max(0,l-1)*6)})`;el($('dom'),(l-.9)/.5);
+};setT(0);
+</script></body></html>
